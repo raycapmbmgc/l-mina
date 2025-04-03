@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lúmina</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="tela-inicial">
+    
+    <button id="mute-btn">🔊 Som Ligado</button>
+
+    <!-- Personagens posicionados fora do conteúdo -->
+    <img src="assets/personagem1.png" class="personagem personagem-esquerda" />
+    <img src="assets/personagem2.png" class="personagem personagem-direita" />
+    <img src="assets/fogo.png" class="fogo" />
+    
+
+    <div class="container">
+        <h1 class="titulo">LUMINA <p>os portais da memória</p></h1>
+        <button class="botao" onclick="iniciarJogo()">Iniciar</button>
+    </div>
+
+    <script>
+        // Inicializando o botão de mute
+        const muteBtn = document.getElementById("mute-btn");
+
+        // Criar um elemento de áudio para a música de fundo
+        const musica = new Audio("assets/musica.mp3");
+        musica.loop = true; // Repetir a música
+        musica.volume = 0.5; // Ajuste de volume
+
+        // Variável para garantir que a música só toque após interação
+        let musicaIniciada = false;
+
+        // Função para iniciar a música quando o usuário clicar em um botão
+        function iniciarMusica() {
+            if (!musicaIniciada) {
+                musica.play().catch(error => console.log("Erro ao iniciar áudio:", error));
+                musicaIniciada = true;
+                console.log("Música iniciada.");
+            }
+        }
+
+        // Chamar a função de iniciar música ao clicar no botão
+        muteBtn.addEventListener("click", () => {
+            iniciarMusica();
+            if (musica.muted) {
+                musica.muted = false;
+                muteBtn.textContent = "🔊 Som Ligado";
+            } else {
+                musica.muted = true;
+                muteBtn.textContent = "🔇 Som Desligado";
+            }
+        });
+
+        // Função para alternar o mute (não funciona sem música iniciada)
+        function iniciarJogo() {
+            window.location.href = "/select";
+        }
+    </script>
+      <script src="audio.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+/* Estilos gerais */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('assets/fundo-jogo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+}
+
+/* Canvas */
+#gameCanvas {
+    width: 900px;
+    height: 500px;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal do jogo da memória */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.memoria-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.carta {
+    width: 80px;
+    height: 120px;
+    background: gray;
+    display: inline-block;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Estilos da charada */
+.riddle-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 100;
+}
+
+.riddle {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.riddle input {
+    margin-top: 10px;
+    padding: 10px;
+    border: 2px solid #ffcc00;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 80%;
+}
+
+.riddle button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #ffcc00;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.riddle button:hover {
+    background: #ffaa00;
+}
+
+/* Botão */
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #ffcc00;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #ffaa00;
+}
+
+#mute-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background: #0044cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#mute-btn:hover {
+    background: #003399;
+}

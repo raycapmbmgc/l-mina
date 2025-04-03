@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Escolha seu Personagem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Escolha seu Personagem</h1>
+    <button id="mute-btn">🔊 Som Ligado</button>
+    <div id="selecionar">
+        <div class="personagem-container">
+            <img src="assets/personagem1.png" id="p1" class="personagem" onclick="selecionar('p1')">
+            <div class="personagem-nome">NICK</div>
+        </div>
+        <div class="personagem-container">
+            <img src="assets/personagem2.png" id="p2" class="personagem" onclick="selecionar('p2')">
+            <div class="personagem-nome">LEO</div>
+        </div>
+    </div>
+    <button onclick="iniciarJogo()">Iniciar Jogo</button>
+
+    <script>
+        let personagemSelecionado = "";
+
+        // Função para selecionar personagem
+        function selecionar(personagem) {
+            // Remove a seleção de todos os personagens
+            document.querySelectorAll(".personagem").forEach(p => p.classList.remove("selecionado"));
+            
+            // Adiciona a seleção ao personagem clicado
+            document.getElementById(personagem).classList.add("selecionado");
+            personagemSelecionado = personagem;
+        }
+
+        // Função para iniciar o jogo
+        function iniciarJogo() {
+            if (personagemSelecionado) {
+                localStorage.setItem("personagem", personagemSelecionado);
+                window.location.href = "/game";
+            } else {
+                alert("Escolha um personagem!");
+            }
+        }
+
+        // Captura o botão de mute
+        const muteBtn = document.getElementById("mute-btn");
+
+        // Criar um elemento de áudio para a música de fundo
+        const musica = new Audio("assets/musica.mp3");
+        musica.loop = true; // Repetir a música
+        musica.volume = 0.5; // Ajuste de volume
+
+        // Flag para verificar se a música já foi iniciada
+        let musicaIniciada = false;
+
+        // Função para iniciar a música
+        function iniciarMusica() {
+            if (!musicaIniciada) {
+                musica.play().catch(error => console.log("Erro ao iniciar áudio:", error));
+                musicaIniciada = true;
+                console.log("Música iniciada.");
+            }
+        }
+
+        // Chama a função de iniciar música quando a página carregar
+        window.addEventListener("load", () => {
+            iniciarMusica();
+        });
+
+        // Adiciona o evento de clique para alternar mute
+        muteBtn.addEventListener("click", () => {
+            if (musica.muted) {
+                musica.muted = false;
+                muteBtn.textContent = "🔊 Som Ligado";
+            } else {
+                musica.muted = true;
+                muteBtn.textContent = "🔇 Som Desligado";
+            }
+        });
+    </script>
+</body>
+</html>

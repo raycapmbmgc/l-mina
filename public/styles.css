@@ -1,0 +1,202 @@
+/* Importação de fonte gamer (caso queira para títulos e botões) */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fundo e estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Para evitar barras de rolagem desnecessárias */
+}
+
+/* Fundos específicos para cada tela */
+.tela-inicial {
+    background: url('assets/fundo1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+.tela-selecao {
+    background: url('assets/fundo2.png') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+.tela-jogo {
+    background: url('assets/fundo3.png') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+/* Container estilizado */
+.container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 10; /* Mantém o container acima dos outros elementos */
+}
+
+/* Estilo do título */
+.titulo {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 4px 4px 15px rgba(255, 255, 255, 0.7);
+}
+ .titulo p{
+     margin: 10px;
+     font-size: 20px;
+ }
+/* Botão estilizado */
+.botao {
+    background: #ffcc00;
+    color: #333;
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.botao:hover {
+    background: #ffaa00;
+    transform: scale(1.1);
+}
+
+/* 🔥 Fogo acima do container 🔥 */
+.fogo {
+    position: absolute;
+    top: 10%; /* Ajustado para iniciar mais perto do topo */
+    margin-left: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    z-index: 20;
+    animation: fogo-subir-descer 2s ease-in-out infinite alternate,
+               fogo-tremor 0.2s infinite alternate ease-in-out;
+}
+
+/* 🔥 Animação de subir e descer 🔥 */
+@keyframes fogo-subir-descer {
+    0% {
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-10px) scale(1.05);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+
+/* Personagens agora estão maiores e se movem suavemente */
+.personagem {
+    width: 480px; /* Aumentado */
+    height: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: movimento-personagem 2.5s ease-in-out infinite alternate;
+}
+
+/* Personagem da esquerda */
+.personagem-esquerda {
+    left: 8%;
+}
+
+/* Personagem da direita */
+.personagem-direita {
+    right: 8%;
+}
+
+/* Animação de movimento dos personagens */
+@keyframes movimento-personagem {
+    0% {
+        transform: translateY(-50%) translateX(0);
+    }
+    100% {
+        transform: translateY(-52%) translateX(15px);
+    }
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+    .container {
+        width: 90%; /* Ajuste para melhor adaptação */
+    }
+
+    .titulo {
+        font-size: 32px; /* Reduz o tamanho do título */
+    }
+
+    .botao {
+        font-size: 18px; /* Botão menor */
+        padding: 12px 25px;
+    }
+
+    .fogo {
+        width: 150px; /* Fogo menor em telas pequenas */
+        top: 5%;
+        animation: fogo-subir-descer 2s ease-in-out infinite alternate,
+                   fogo-tremor 0.3s infinite alternate ease-in-out;
+    }
+
+    .personagem {
+        width: 180px; /* Reduz tamanho dos personagens */
+        top: auto;
+        bottom: 10px;
+        transform: none;
+        animation: movimento-mobile 2.5s ease-in-out infinite alternate;
+    }
+
+    .personagem-esquerda {
+        left: 5%;
+    }
+
+    .personagem-direita {
+        right: 5%;
+    }
+
+    /* Animação reduzida para personagens em telas pequenas */
+    @keyframes movimento-mobile {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(10px); }
+    }
+}
+
+
+#mute-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background: #0044cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#mute-btn:hover {
+    background: #003399;
+}

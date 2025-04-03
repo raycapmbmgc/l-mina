@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo - Lúmina</title>
+    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="memoria.css"> <!-- Adicionado aqui -->
+</head>
+<body>
+
+    <button id="mute-btn">🔊 Som Ligado</button>
+
+    <h1>Resolva os Desafios para Abrir a Porta!</h1>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+    <!-- Modal do Jogo da Memória -->
+    <div id="memoriaModal" class="modal">
+        <div class="modal-content">
+            <h2>Desafio: Jogo da Memória</h2>
+            <div class="memoria-grid"></div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+    <script src="memoria.js"></script> <!-- Adicionado aqui -->
+    <script src="audio.js"></script>
+</body>
+</html>

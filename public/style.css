@@ -1,0 +1,145 @@
+/* Importando uma fonte estilosa do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@700&display=swap');
+
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fundo da tela de seleção */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('assets/fundo2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+}
+
+/* Título estilizado */
+h1 {
+    font-family: 'Press Start 2P', cursive; /* Fonte retrô gamer */
+    font-size: 42px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
+    background: linear-gradient(90deg, #ffcc00, #ff6600);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: brilho 1.5s infinite alternate;
+}
+
+/* Animação de brilho para o título */
+@keyframes brilho {
+    0% { text-shadow: 2px 2px 10px rgba(255, 204, 0, 0.7); }
+    100% { text-shadow: 4px 4px 20px rgba(255, 102, 0, 1); }
+}
+
+/* Área de seleção dos personagens */
+#selecionar {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 30px;
+}
+
+/* Container do personagem */
+.personagem-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Personagens */
+.personagem {
+    width: 300px; /* Aumentado */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, opacity 0.3s;
+    border: 5px solid transparent;
+    border-radius: 10px;
+}
+
+/* Nome do personagem */
+.personagem-nome {
+    margin-top: 10px;
+    font-size: 26px; /* Aumentado */
+    font-family: 'Press Start 2P', cursive;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.7);
+    animation: brilho-nome 1.5s infinite alternate;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Animação de brilho nos nomes dos personagens */
+@keyframes brilho-nome {
+    0% { text-shadow: 2px 2px 10px rgba(255, 204, 0, 0.7); }
+    100% { text-shadow: 4px 4px 20px rgba(255, 102, 0, 1); }
+}
+
+/* Efeito ao passar o mouse no nome */
+.personagem-container:hover .personagem-nome {
+    transform: scale(1.2);
+}
+
+/* Efeito ao passar o mouse */
+.personagem:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* Personagem selecionado */
+.personagem.selecionado {
+    border-color: #ffcc00;
+    box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.8);
+}
+
+/* Botão estilizado */
+button {
+    background: #ffcc00;
+    color: #333;
+    padding: 15px 40px;
+    font-size: 22px;
+    font-family: 'Press Start 2P', cursive;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background: #ffaa00;
+    transform: scale(1.1);
+}
+
+
+
+#mute-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background: #0044cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#mute-btn:hover {
+    background: #003399;
+}

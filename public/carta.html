@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Antigo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('assets/fundo1.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .banner-container {
+            overflow: hidden;
+            width: 600px;
+            height: 0;
+            transition: height 1.5s ease-in-out;
+            background-color: #8B5A2B;
+            text-align: center;
+            padding: 20px;
+            font-size: 28px;
+            font-family: 'VT323', monospace;
+            color: #f5deb3;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 0;
+            image-rendering: pixelated;
+        }
+
+        .banner-container.open {
+            height: 250px;
+        }
+
+        @keyframes desenrolar {
+            0% { transform: scaleY(0); }
+            100% { transform: scaleY(1); }
+        }
+
+        .banner-container.open {
+            animation: desenrolar 1.5s ease-in-out;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #8B5A2B;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'VT323', monospace;
+        }
+
+        
+
+#mute-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background: #0044cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#mute-btn:hover {
+    background: #003399;
+}
+
+    </style>
+</head>
+<body>
+    <button id="mute-btn">🔊 Som Ligado</button>
+
+    <div class="banner-container" id="banner">
+        <p>
+            Você passou para a próxima fase! Sua coragem e determinação
+             o trouxeram até aqui. Agora, prepare-se, pois em breve você 
+             estará mais perto de recuperar a chama perdida.
+        </p>
+    </div>
+    <button class="button" onclick="abrirBanner()">Abrir Mapa</button>
+
+    <script>
+        function abrirBanner() {
+            document.getElementById('banner').classList.toggle('open');
+        }
+
+         // Captura o botão de mute
+         const muteBtn = document.getElementById("mute-btn");
+
+// Criar um elemento de áudio para a música de fundo
+const musica = new Audio("assets/musica.mp3");
+musica.loop = true; // Repetir a música
+musica.volume = 0.5; // Ajuste de volume
+
+// Flag para verificar se a música já foi iniciada
+let musicaIniciada = false;
+
+// Função para iniciar a música
+function iniciarMusica() {
+    if (!musicaIniciada) {
+        musica.play().catch(error => console.log("Erro ao iniciar áudio:", error));
+        musicaIniciada = true;
+        console.log("Música iniciada.");
+    }
+}
+
+// Chama a função de iniciar música quando a página carregar
+window.addEventListener("load", () => {
+    iniciarMusica();
+});
+
+// Adiciona o evento de clique para alternar mute
+muteBtn.addEventListener("click", () => {
+    if (musica.muted) {
+        musica.muted = false;
+        muteBtn.textContent = "🔊 Som Ligado";
+    } else {
+        musica.muted = true;
+        muteBtn.textContent = "🔇 Som Desligado";
+    }
+});
+    </script>
+</body>
+</html>
